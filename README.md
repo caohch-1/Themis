@@ -1,23 +1,11 @@
 # Themis: RPC-Driven Race Detection and Directed Fuzz Validation for Distributed Systems
 
 
-## 1. Abstract
-Distributed concurrency bugs occur when concurrent execution flows, at least one of which is triggered by inter-node communication such as remote procedure calls (RPCs), access the same shared variable or object in conflicting ways, causing incorrect behavior under certain interleavings. Existing work for detecting distributed concurrency bugs focuses on dynamic approaches, thus suffering from limited coverage. This paper proposes Themis, a novel approach that uses static analysis to detect potential races, applies LLM-based test generation, and employs directed fuzzing to refine input parameters for detecting distributed concurrency bugs.
+## 1. Contents and Goals
 
-
-
-## 2. Themis Framework Description
-
-To detect distributed concurrency bugs with both broad coverage and high precision, Themis adopts an integrated framework that combines static detection of RPC-induced races, LLM-based test generation, and directed fuzzing for parameter refinement and interleaving exploration for bug exposure. The workflow follows the paper’s three-part decomposition:
-
-1. **Part I - Static RPC-Driven Race Detection**: The analysis traverses RPC client-server call chains both upward and downward to identify RPC-reachable variables and their access sites, then applies violation-analysis rules with error-pattern matching to retain harmful distributed-concurrency bug candidates under the open-systems assumption that any pair of public interfaces may execute concurrently.
-2. **Part II - LLM-Based Holistic Test Generation**: Themis constructs test harnesses for public interfaces, synthesizing state-preparing call sequences while using repair loops to recover executability when coarse parameter values fail to satisfy path constraints.
-3. **Part III - Staged Parameter Fuzzing and Interleaving Exploration**: Themis first performs race-targeted parameter fuzzing to reach racy memory accesses, then manipulates interleavings to expose violations, and finally executes symptom-targeted follow-up fuzzing to satisfy error-propagation conditions and expose observable symptoms.
-
-## 3. Content Organization
-
+This repository implements a prototype of Themis, a framework for detecting distributed concurrency bugs that arise when concurrent execution flows—at least one triggered by RPC communication—access shared variables or objects in conflicting ways under certain interleavings. 
+The goal is to implement the paper’s three-stage approach that integrates static RPC-driven race detection, LLM-based test generation, and directed fuzzing to detect and validate distributed concurrency bugs.
 The repository is organized as a layered implementation of the paper's three-part methodology, where each module occupies a distinct analytical role while exchanging strongly typed intermediate representations.
-
 - **Static-analysis module**: operationalizes **Static RPC-Driven Race Detection** by extracting RPC-reachable variable accesses, applying violation rules, and producing candidate harmful concurrency violations.
 - **LLM-generation module**: implements **LLM-Based Holistic Test Generation** by transforming static candidates into executable harnesses through generation-and-repair cycles and parameter-seed preparation.
 - **Fuzz-validation module**: implements **Staged Parameter Fuzzing and Interleaving Exploration** by conducting race-targeted fuzzing, interleaving manipulation, and symptom-targeted follow-up validation.
@@ -25,7 +13,7 @@ The repository is organized as a layered implementation of the paper's three-par
 - **Configuration and dependency substrate**: supplies prompt templates, policy parameters, and scripts for easier experiment and usage.
 
 
-## 4. Requirements
+## 2. Requirements
 
 ### Hardware
 
@@ -41,7 +29,7 @@ The only hardware requirement is memory capacity: at least 128 GB RAM is require
 - **SelectFuzz**: Used as the directed fuzzing algorithm backend; a minimal runtime check is `afl-fuzz -h`.
 
 
-## 5. Instructions
+## 3. Instructions
 
 ### Dependency installation
 
@@ -72,7 +60,7 @@ java -jar ./target/ThemisFuzzer-1.0-SNAPSHOT-all.jar [system_name] --failed-time
 
 
 
-## 6. Citation
+## 4. Citation
 If you use Themis in your research, please cite the paper as follows.
 ```
 @inproceedings{cao2026themis,
