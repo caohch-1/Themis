@@ -3,7 +3,7 @@
 
 ## 1. Contents and Goals
 
-This repository implements a prototype of Themis, a framework for detecting distributed concurrency bugs that arise when concurrent execution flows—at least one triggered by RPC communication—access shared variables or objects in conflicting ways under certain interleavings. 
+This repository implements a prototype of Themis, a framework for detecting distributed concurrency bugs that arise when concurrent execution flows access shared variables or objects in conflicting ways under certain interleavings. 
 The goal is to implement the paper’s three-stage approach that integrates static RPC-driven race detection, LLM-based test generation, and directed fuzzing to detect and validate distributed concurrency bugs.
 The repository is organized as a layered implementation of the paper's three-part methodology, where each module occupies a distinct analytical role while exchanging strongly typed intermediate representations.
 - **Static-analysis module**: operationalizes **Static RPC-Driven Race Detection** by extracting RPC-reachable variable accesses, applying violation rules, and producing candidate harmful concurrency violations.
