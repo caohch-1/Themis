@@ -56,9 +56,19 @@ Stage I should be treated as a coupled bootstrap of two independently evolved fu
 ### Framework Execution
 
 Once the dependency stratum has been stabilized, running Themis becomes an exercise in orchestrating a multi-phase analytical continuum: compile the static-analysis and fuzz-validation subsystems through a Maven reactor pass (`mvn -q -DskipTests package`), optionally run verification (`mvn -q test`), and then invoke either staged commands such as `java -cp "<assembled-classpath>" themis static-detect --config <config> --out <static-output>` and `java -cp "<assembled-classpath>" themis fuzz-validate --config <config> --out <fuzz-output>`, or the integrated pipeline invocation `java -cp "<assembled-classpath>" themis pipeline --config <config> --out <run-output>`.
+
 If LLM-mediated test generation is desired, expose a valid Claude credential through the expected environment variable before execution (`export ANTHROPIC_API_KEY="<claude-api-key>"`); absent this credential, the generative harness-synthesis phase will be unavailable.
 
+You can check the result for a single system by specifying the arguments of the compiled jar file as follows:
+```
+# Legal system name includes mapreduce, yarn, hdfs, hadoop, hbase, tez, hive, and alluxio
+java -jar ./target/Themis-1.0-SNAPSHOT.jar [system_name]
 
+# failed-timeout is the given budget for triggering a violation.
+# The suggested value is 1800, you can set it to a lower value to get the results quicker.
+# However, it should not lower than 600, which would makes some violations failed to trigger.
+java -jar ./JQF/ThemisFuzzer/target/ThemisFuzzer-1.0-SNAPSHOT-all.jar [system_name] --failed-timeout 600
+```
 
 
 
