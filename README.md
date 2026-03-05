@@ -32,7 +32,7 @@ The repository is organized as a layered implementation of the paper's three-par
 The only hardware requirement is memory capacity: at least 128 GB RAM is required to stably load and analyze the bytecode of multiple large target systems. In addition, fuzzing throughput and effectiveness are influenced by CPU parallelism and clock speed, cache and memory bandwidth, storage I/O latency and stability, etc.
 
 
-### Software Envelope
+### Software
 
 - **OS**: Tested on Ubuntu 20.04.
 - **Java**: JDK 8 for Soot and target system compatibility; a quick sanity probe is `java -version` plus `javac -version`.
