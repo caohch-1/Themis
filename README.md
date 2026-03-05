@@ -14,7 +14,7 @@ To detect distributed concurrency bugs with both broad coverage and high precisi
 2. **Part II - LLM-Based Holistic Test Generation**: Themis constructs test harnesses for public interfaces, synthesizing state-preparing call sequences while using repair loops to recover executability when coarse parameter values fail to satisfy path constraints.
 3. **Part III - Staged Parameter Fuzzing and Interleaving Exploration**: Themis first performs race-targeted parameter fuzzing to reach racy memory accesses, then manipulates interleavings to expose violations, and finally executes symptom-targeted follow-up fuzzing to satisfy error-propagation conditions and expose observable symptoms.
 
-## 3. Content Organzation
+## 3. Content Organization
 
 The repository is organized as a layered implementation of the paper's three-part methodology, where each module occupies a distinct analytical role while exchanging strongly typed intermediate representations.
 
@@ -35,10 +35,10 @@ The only hardware requirement is memory capacity: at least 128 GB RAM is require
 ### Software Envelope
 
 - **OS**: Tested on Ubuntu 20.04.
-- **Java**: JDK 8 for Soot and target system compability.
+- **Java**: JDK 8 for Soot and target system compatibility; a quick sanity probe is `java -version` plus `javac -version`.
 - **Soot**: Version 3.0.0 as the static program analysis core.
-- **JQF**: Used as the Java fuzzing backend.
-- **SelectFuzz**: Uused as the directed fuzzing algorithm backend.
+- **JQF**: Used as the Java fuzzing backend; a practical launcher check is `jqf-afl-fuzz` after build bootstrap.
+- **SelectFuzz**: Used as the directed fuzzing algorithm backend; a minimal runtime check is `afl-fuzz -h`.
 
 
 ## 5. Instructions
@@ -47,18 +47,16 @@ The only hardware requirement is memory capacity: at least 128 GB RAM is require
 
 Stage I should be treated as a coupled bootstrap of two independently evolved fuzzing substrates, namely JQF (coverage-guided JVM fuzzing) and SelectFuzz (selective directed mutation infrastructure), followed by an integration sanity pass that confirms they can coexist under Themis orchestration.
 
-1. **Java and Soot Installation**: Java 8 can be downloaded and installed from https://www.java.com/en/download/manual.jsp or https://openjdk.org/projects/jdk8/. Soot is included in the maven pom in the project but you can still use your local soot jar by manually changing the setting. Note that higher version of Java and Soot may cause exceptions since incompability.
+1. **Java and Soot Installation**: Java 8 can be downloaded and installed from https://www.java.com/en/download/manual.jsp or https://openjdk.org/projects/jdk8/. Soot is included in the Maven dependency configuration, but you may still substitute a local Soot artifact by changing settings accordingly. Note that higher Java or Soot versions may introduce incompatibility exceptions. After installation, validate toolchain integrity with `java -version`, `javac -version`, and `mvn -version`.
 
-2. **JQF substrate construction**: Initialize the vendored JQF component with its bootstrap script and execute a Maven package cycle that materializes launchers plus instrumentation and fuzzing artifacts. In practical terms, verify that the JQF command-line launcher is executable and that packaged runtime artifacts are present; otherwise, Themis cannot execute its JQF-backed stage runners.
-A minimal sanity check is to invoke the JQF launcher help command and confirm that instrumentation and fuzzing artifacts are resolvable.
+2. **JQF substrate construction**: Bootstrap the JQF component and execute a Maven package cycle that materializes launchers plus instrumentation and fuzzing artifacts, typically through `mvn -q -DskipTests package`. In practical terms, verify that the launcher is executable by running `jqf-afl-fuzz`; otherwise, Themis cannot execute its JQF-backed stage runners.
 
-3. **SelectFuzz substrate construction**: Perform a clean top-level build, and then perform a clean build for the LLVM-based mode. The SelectFuzz documentation notes that an intermediate `test_build` warning in LLVM mode may be non-fatal; the practical success criterion is that the core fuzzing binary is callable.
-A lightweight confidence probe is to request help output from the core fuzzing binary; if the binary is discoverable and responsive, the local selective-fuzzing toolchain is considered operational.
+3. **SelectFuzz substrate construction**: Set the expected environment context with `export AFLGO="$PWD"`, perform a clean top-level build via `make clean all`, and repeat an equivalent clean build in LLVM mode. The SelectFuzz documentation notes that an intermediate `test_build` warning in LLVM mode may be non-fatal; the practical success criterion is that the core fuzzing binary is callable (`afl-fuzz -h`).
 
 ### Framework Execution
 
-Once the dependency stratum has been stabilized, running Themis becomes an exercise in orchestrating a multi-phase analytical continuum: first compile the static-analysis and fuzz-validation subsystems through a Maven reactor pass (e.g., `java -cp "<assembled-classpath>" themis static-detect --config <config> --out <static-output>`), then invoke either staged commands or the integrated pipeline command according to your experimental intent.  You can find the detail usage of the parameters to control what kind of evaluation to execute in the code.
-If LLM-mediated test generation is desired, expose a valid Claude credential through the expected environment variable before execution (i.e., `export ANTHROPIC_API_KEY="<claude-api-key>"`); absent this credential, the generative harness-synthesis phase will be unavailable.
+Once the dependency stratum has been stabilized, running Themis becomes an exercise in orchestrating a multi-phase analytical continuum: compile the static-analysis and fuzz-validation subsystems through a Maven reactor pass (`mvn -q -DskipTests package`), optionally run verification (`mvn -q test`), and then invoke either staged commands such as `java -cp "<assembled-classpath>" themis static-detect --config <config> --out <static-output>` and `java -cp "<assembled-classpath>" themis fuzz-validate --config <config> --out <fuzz-output>`, or the integrated pipeline invocation `java -cp "<assembled-classpath>" themis pipeline --config <config> --out <run-output>`.
+If LLM-mediated test generation is desired, expose a valid Claude credential through the expected environment variable before execution (`export ANTHROPIC_API_KEY="<claude-api-key>"`); absent this credential, the generative harness-synthesis phase will be unavailable.
 
 
 
