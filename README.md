@@ -1,4 +1,4 @@
-# Themis: RPC-Driven Race Detection and Directed Fuzz Validation for Distributed Systems
+# Themis: Detecting Distributed Concurrency Bugs through RPC-Driven Race-Directed Test Generation and Fuzzing
 
 
 ## 1. Contents and Goals
