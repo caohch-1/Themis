@@ -11,7 +11,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 public class FileAddressPropertyChecker {
-    private static final String DEEPSEEK_API_KEY = "sk-c11c7c71d0cc4d2ba8d64c63e079cb5e";
+    private static final String DEEPSEEK_API_KEY = "";
     private static final String API_ENDPOINT = "https://api.deepseek.com/chat/completions";
     private static final Gson gson = new Gson();
 
@@ -87,3 +87,4 @@ public class FileAddressPropertyChecker {
 
 
 }
+
