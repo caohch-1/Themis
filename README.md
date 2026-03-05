@@ -67,7 +67,7 @@ java -jar ./target/Themis-1.0-SNAPSHOT.jar [system_name]
 # failed-timeout is the given budget for triggering a violation.
 # The suggested value is 1800, you can set it to a lower value to get the results quicker.
 # However, it should not lower than 600, which would makes some violations failed to trigger.
-java -jar ./JQF/ThemisFuzzer/target/ThemisFuzzer-1.0-SNAPSHOT-all.jar [system_name] --failed-timeout 600
+java -jar ./target/ThemisFuzzer-1.0-SNAPSHOT-all.jar [system_name] --failed-timeout 600
 ```
 
 
