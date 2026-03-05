@@ -26,10 +26,3 @@ class PublicInterfaceSelector:
                 queue.append((nxt, dist + 1))
         return 10 ** 9
 
-    def is_top_level(self, method: str, adjacency: Dict[str, List[str]]) -> bool:
-        if method.endswith("main") or method.endswith("main()"):
-            return True
-        for _, callees in adjacency.items():
-            if method in callees:
-                return False
-        return True
