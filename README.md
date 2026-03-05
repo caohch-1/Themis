@@ -18,7 +18,7 @@ The repository is organized as a layered implementation of the paper's three-par
 
 ### Hardware
 
-The only hardware requirement is memory capacity: at least 128 GB RAM is required to stably load and analyze the bytecode of multiple large target systems. In addition, fuzzing throughput and effectiveness are influenced by CPU parallelism and clock speed, cache and memory bandwidth, storage I/O latency and stability, etc.
+The only hardware requirement is memory capacity: at least 128 GB RAM is required to stably load and analyze the bytecode of multiple large target systems. In addition, fuzzing throughput and effectiveness are influenced by CPU parallelism and clock speed, cache and memory bandwidth, etc.
 
 
 ### Software
