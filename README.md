@@ -69,6 +69,7 @@ If you use Themis in your research, please cite the paper as follows.
 title={Themis: Detecting Distributed Concurrency Bugs through RPC-Driven Race-Directed Test Generation and Fuzzing},
 author={Hongchen Cao and Jingzhu He and Ting Dai and Guoliang Jin},
 booktitle={Proceedings of the 23rd USENIX Symposium on Networked Systems Design and Implementation (NSDI'26)},
+month = MAY,
 year=2026
 }
 ```
