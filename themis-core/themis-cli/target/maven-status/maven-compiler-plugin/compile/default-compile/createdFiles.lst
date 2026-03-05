@@ -1,0 +1,9 @@
+io/themis/cli/util/PythonInvoker.class
+io/themis/cli/orchestration/PipelineOrchestrator.class
+io/themis/cli/example/MapReduce7507Adapter.class
+io/themis/cli/ThemisCliMain.class
+io/themis/cli/command/GenerateTestsCommand.class
+io/themis/cli/command/StaticDetectCommand.class
+io/themis/cli/command/PipelineCommand.class
+io/themis/cli/command/FuzzValidateCommand.class
+io/themis/cli/util/ConfigLoader.class

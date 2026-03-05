@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FuzzOutcome",
+  "type": "object",
+  "required": ["violationId", "exposed", "reachedStage"],
+  "properties": {
+    "violationId": {"type": "string"},
+    "exposed": {"type": "boolean"},
+    "reachedStage": {"type": "string"},
+    "reachedTargets": {"type": "array", "items": {"type": "string"}},
+    "exercisedInterleavings": {"type": "array", "items": {"type": "string"}},
+    "manifestedSymptoms": {"type": "array", "items": {"$ref": "SymptomCandidate.schema.json"}},
+    "finalSeedPool": {"$ref": "SeedPoolState.schema.json"},
+    "metadata": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

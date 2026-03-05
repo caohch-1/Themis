@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SharedVariable",
+  "type": "object",
+  "required": ["id", "name", "declaringClass", "scope", "side", "type"],
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "declaringClass": {"type": "string"},
+    "declaringMethod": {"type": "string"},
+    "scope": {"type": "string"},
+    "side": {"type": "string"},
+    "type": {"type": "string"},
+    "ioPathCandidates": {"type": "array", "items": {"type": "string"}},
+    "accessSiteIds": {"type": "array", "items": {"type": "string"}}
+  }
+}

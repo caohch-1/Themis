@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionPathBundle",
+  "type": "object",
+  "required": ["violationId", "rpcPair", "violationTuple", "callChain"],
+  "properties": {
+    "violationId": {"type": "string"},
+    "rpcPair": {"$ref": "RpcPair.schema.json"},
+    "violationTuple": {"$ref": "ViolationTuple.schema.json"},
+    "callChain": {"type": "array", "items": {"type": "string"}},
+    "sourceCodeSnippets": {"type": "array", "items": {"type": "string"}},
+    "rpcServerClassCode": {"type": "string"},
+    "targetSymptomStatement": {"type": "string"}
+  }
+}

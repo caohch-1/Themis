@@ -1,0 +1,28 @@
+{
+  "systemName": "mapreduce",
+  "codeRoot": ".",
+  "classPath": "examples/mapreduce7507/target/classes:themis-core/target/classes:themis-static/target/classes:themis-fuzz/target/classes:themis-cli/target/classes",
+  "outputDir": "output",
+  "staticConfig": {
+    "rpcBridgeCommand": "rpcbridge",
+    "propagationHopBound": -1,
+    "threadUnsafeRegistryPath": "/etc/thread_unsafe_objects.json",
+    "targetSourceRoots": []
+  },
+  "llmConfig": {
+    "model": "claude-opus-4-6",
+    "apiKeyEnv": "ANTHROPIC_API_KEY",
+    "repairThreshold": 8,
+    "restartCycles": 5,
+    "compileClassPath": "",
+    "runtimeClassPath": "",
+    "buildOracleCommand": ""
+  },
+  "fuzzConfig": {
+    "stageTimeBudgetMinutes": ,
+    "mutationBatchSize": ,
+    "instrumentationHopLimit": ,
+    "jqfArgs": ["-Djqf.logCoverage=true"],
+    "selectFuzzArgs": ["--policy", "directed"]
+  }
+}

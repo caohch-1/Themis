@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AccessSite",
+  "type": "object",
+  "required": ["id", "className", "methodSignature", "statement", "lineNumber", "variable", "scope", "operation", "side"],
+  "properties": {
+    "id": {"type": "string"},
+    "className": {"type": "string"},
+    "methodSignature": {"type": "string"},
+    "statement": {"type": "string"},
+    "lineNumber": {"type": "integer"},
+    "variable": {"type": "string"},
+    "scope": {"type": "string"},
+    "operation": {"type": "string"},
+    "side": {"type": "string"},
+    "reachableFromRpc": {"type": "boolean"},
+    "publicCallerDepth": {"type": "integer"},
+    "attributes": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

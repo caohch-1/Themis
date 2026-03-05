@@ -1,0 +1,3 @@
+You are given a Java integration test case that executes on a live system {test_code}. The test fails to reach target buggy statements {target_statements}. The execution path starts from public APIs {public_api_names} and should follow call chain {call_chain}. Last execution reached {closest_statement}. Related source code is {source_codes}.
+Refine the test by modifying only input parameters. Infer which parameter values block required path conditions and provide new concrete values that can drive execution to target statements.
+Produce a complete Java test class named {test_name} with a main method that can be compiled and executed directly.

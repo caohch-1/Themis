@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SymptomCandidate",
+  "type": "object",
+  "required": ["id", "pattern", "kind", "statement", "hopDistance"],
+  "properties": {
+    "id": {"type": "string"},
+    "pattern": {"type": "string"},
+    "kind": {"type": "string"},
+    "statement": {"type": "string"},
+    "path": {"type": "array", "items": {"type": "string"}},
+    "hopDistance": {"type": "integer"}
+  }
+}

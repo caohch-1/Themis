@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GeneratedTestArtifact",
+  "type": "object",
+  "required": ["id", "violationId", "testClassName", "code", "executable"],
+  "properties": {
+    "id": {"type": "string"},
+    "violationId": {"type": "string"},
+    "testClassName": {"type": "string"},
+    "code": {"type": "string"},
+    "publicInterfacePair": {"$ref": "PublicInterfacePair.schema.json"},
+    "primaryParameters": {"type": "object", "additionalProperties": {"type": "string"}},
+    "candidateParameterSets": {"type": "array", "items": {"type": "object", "additionalProperties": {"type": "string"}}},
+    "executable": {"type": "boolean"},
+    "source": {"type": "string"}
+  }
+}

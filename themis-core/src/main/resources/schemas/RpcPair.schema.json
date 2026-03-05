@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RpcPair",
+  "type": "object",
+  "required": ["id", "protocol", "clientClass", "clientMethod", "serverClass", "serverMethod"],
+  "properties": {
+    "id": {"type": "string"},
+    "protocol": {"type": "string"},
+    "clientClass": {"type": "string"},
+    "clientMethod": {"type": "string"},
+    "serverClass": {"type": "string"},
+    "serverMethod": {"type": "string"},
+    "clientAddressKeys": {"type": "array", "items": {"type": "string"}},
+    "serverAddressKeys": {"type": "array", "items": {"type": "string"}},
+    "metadata": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

@@ -1,0 +1,9 @@
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/ThemisCliMain.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/command/FuzzValidateCommand.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/command/GenerateTestsCommand.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/command/PipelineCommand.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/command/StaticDetectCommand.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/example/MapReduce7507Adapter.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/orchestration/PipelineOrchestrator.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/util/ConfigLoader.java
+/Users/caohch1/Projects/ThemisProj/themis-cli/src/main/java/io/themis/cli/util/PythonInvoker.java

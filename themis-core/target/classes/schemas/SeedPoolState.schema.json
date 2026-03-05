@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SeedPoolState",
+  "type": "object",
+  "required": ["violationId", "stage", "iteration", "seeds", "bestDistance"],
+  "properties": {
+    "violationId": {"type": "string"},
+    "stage": {"type": "string"},
+    "iteration": {"type": "integer"},
+    "seeds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "values", "score", "source"],
+        "properties": {
+          "id": {"type": "string"},
+          "values": {"type": "object", "additionalProperties": {"type": "string"}},
+          "score": {"type": "number"},
+          "source": {"type": "string"}
+        }
+      }
+    },
+    "bestDistance": {"type": "integer"}
+  }
+}

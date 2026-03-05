@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ViolationTuple",
+  "type": "object",
+  "required": ["id", "variableId", "accessSites", "type", "ruleId", "side"],
+  "properties": {
+    "id": {"type": "string"},
+    "variableId": {"type": "string"},
+    "enclosingFunctions": {"type": "array", "items": {"type": "string"}},
+    "accessSites": {"type": "array", "items": {"$ref": "AccessSite.schema.json"}},
+    "type": {"type": "string"},
+    "ruleId": {"type": "string"},
+    "rpcPairId": {"type": "string"},
+    "side": {"type": "string"},
+    "publicInterfacePair": {"$ref": "PublicInterfacePair.schema.json"},
+    "interleavingShapes": {"type": "array", "items": {"type": "string"}},
+    "symptomCandidates": {"type": "array", "items": {"$ref": "SymptomCandidate.schema.json"}},
+    "synchronizedPruned": {"type": "boolean"},
+    "metadata": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

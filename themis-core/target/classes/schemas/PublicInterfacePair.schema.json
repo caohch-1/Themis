@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PublicInterfacePair",
+  "type": "object",
+  "required": ["leftPublicMethod", "rightPublicMethod"],
+  "properties": {
+    "leftPublicMethod": {"type": "string"},
+    "rightPublicMethod": {"type": "string"},
+    "leftPath": {"type": "array", "items": {"type": "string"}},
+    "rightPath": {"type": "array", "items": {"type": "string"}}
+  }
+}

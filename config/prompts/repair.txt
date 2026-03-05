@@ -1,0 +1,4 @@
+You are given a failing Java integration test case {failing_test_code}, error message {error_message}, and source code related to this error {relevant_source_code}.
+Repair the failing test with minimal changes while preserving semantics. If the error indicates RPC server IP conflict, reuse existing running server instead of creating a new one. Do not introduce mocking or assertions.
+Keep runtime hook integration intact: preserve imports and calls for io.themis.fuzz.runtime.InterleavingRuntimeHooks and io.themis.fuzz.runtime.ThemisRuntimeContext, including configureFromSystemProperties and probe/probeId calls.
+Produce a complete corrected Java test class named {test_name} with a main method that can be compiled and executed directly.

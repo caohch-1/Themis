@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BugReport",
+  "type": "object",
+  "required": ["bugId", "violationIds", "patterns", "summary", "evidence", "createdAt"],
+  "properties": {
+    "bugId": {"type": "string"},
+    "violationIds": {"type": "array", "items": {"type": "string"}},
+    "patterns": {"type": "array", "items": {"type": "string"}},
+    "summary": {"type": "string"},
+    "evidence": {"type": "string"},
+    "createdAt": {"type": "string", "format": "date-time"}
+  }
+}
